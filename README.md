@@ -23,5 +23,5 @@ Currently, the MVP integrates Amazon and Flipkart.
 - Price history & trend analysis
 - User accounts, wishlist & price-drop alerts
 - Mobile app version
-
+Video of working MVP -  https://drive.google.com/file/d/1MU81jYoo5m33oyu3sUmq-g9dVESKLwKZ/view?usp=sharing&t=7  
 This repository is the foundation for building a scalable and extensible shopping marketplace platform that empowers users to make smarter purchase decisions.
