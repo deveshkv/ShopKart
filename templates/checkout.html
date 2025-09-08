@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Checkout - ShopKart Marketplace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+    <header>
+        <h1>ShopKart Marketplace</h1>
+        <div id="nav-buttons">
+            <button onclick="window.location.href='/'">Home</button>
+            <button onclick="window.location.href='/cart'">Cart</button>
+            <button onclick="window.location.href='/orders'">My Orders</button>
+        </div>
+    </header>
+
+    <main>
+        <h2>Checkout</h2>
+        <form id="checkout-form">
+            <label>
+                Street:
+                <input type="text" id="street" required />
+            </label>
+            <label>
+                City:
+                <input type="text" id="city" required />
+            </label>
+            <label>
+                Mobile:
+                <input type="tel" id="mobile" required />
+            </label>
+            <label>
+                Email:
+                <input type="email" id="email" required />
+            </label>
+            <label>
+                Pin Code:
+                <input type="text" id="pincode" required />
+            </label>
+            <label>
+                Payment Method:
+                <select id="payment-method" disabled>
+                    <option value="debit-card" selected>Debit Card (Default)</option>
+                </select>
+            </label>
+            <button type="submit">Make Payment</button>
+        </form>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/checkout.js') }}"></script>
+</body>
+</html>

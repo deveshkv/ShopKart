@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Homepage</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+<header>
+    <div class="header-container">
+        <div id="loader" class="loader"></div>
+        <div class="logo">ShopKart</div>
+        <div class="search-bar-container">
+            <input type="text" id="search-input" placeholder="Search for products..." />
+            <button id="search-btn">&#128269;</button>
+        </div>
+        <div class="header-links">
+            <button id="login-btn">Login</button>
+            <a href="#" class="header-link">Become a Seller</a>
+            <div class="header-dropdown">
+                <span class="header-link">More &#x25BC;</span>
+                <div class="dropdown-content">
+                    <a href="#">Notification Preferences</a>
+                    <a href="#">24x7 Customer Care</a>
+                    <a href="#">Advertise</a>
+                    <a href="#">Download App</a>
+                </div>
+            </div>
+            <button id="cart-btn" onclick="window.location.href='/cart'">Cart (<span id="cart-count">0</span>)</button>
+            <button id="orders-btn" onclick="window.location.href='/orders'">My Orders</button>
+        </div>
+    </div>
+</header>
+    <nav class="category-nav">
+        <ul class="category-list">
+            <li class="category-item dropdown">
+                Electronics <span>▼</span>
+                <ul class="dropdown-menu">
+                    <li>Mobiles</li>
+                    <li>Laptops</li>
+                    <li>Cameras</li>
+                    <li>Accessories</li>
+                </ul>
+            </li>
+            <li class="category-item dropdown">
+                TVs & Appliances <span>▼</span>
+                <ul class="dropdown-menu">
+                    <li>Televisions</li>
+                    <li>Air Conditioners</li>
+                    <li>Refrigerators</li>
+                    <li>Washing Machines</li>
+                </ul>
+            </li>
+            <li class="category-item dropdown">
+                Men <span>▼</span>
+                <ul class="dropdown-menu">
+                    <li>Clothing</li>
+                    <li>Footwear</li>
+                    <li>Watches</li>
+                    <li>Accessories</li>
+                </ul>
+            </li>
+            <li class="category-item dropdown">
+                Women <span>▼</span>
+                <ul class="dropdown-menu">
+                    <li>Clothing</li>
+                    <li>Footwear</li>
+                    <li>Jewellery</li>
+                    <li>Accessories</li>
+                </ul>
+            </li>
+            <li class="category-item dropdown">
+                Baby & Kids <span>▼</span>
+                <ul class="dropdown-menu">
+                    <li>Toys</li>
+                    <li>Clothing</li>
+                    <li>Footwear</li>
+                    <li>Accessories</li>
+                </ul>
+            </li>
+            <li class="category-item dropdown">
+                Home & Furniture <span>▼</span>
+                <ul class="dropdown-menu">
+                    <li>Furniture</li>
+                    <li>Decor</li>
+                    <li>Kitchen</li>
+                    <li>Storage</li>
+                </ul>
+            </li>
+            <li class="category-item dropdown">
+                Sports, Books & More <span>▼</span>
+                <ul class="dropdown-menu">
+                    <li>Sports</li>
+                    <li>Books</li>
+                    <li>Stationery</li>
+                    <li>Fitness</li>
+                </ul>
+            </li>
+            <li class="category-item">Flights</li>
+            <li class="category-item">Offer Zone</li>
+        </ul>
+    </nav>
+    <section id="slideshow-section">
+        <div id="slideshow">
+            <img id="slide-image" src="{{ url_for('static', filename='slideshow/Screenshot 2025-09-07 202012.png') }}" alt="Slideshow">
+        </div>
+    </section>
+    <section id="what-we-offer">
+        <h2>What We Offer</h2>
+        <div class="offerings">
+            <div class="offering">
+                <h3>Wide Variety of Products</h3>
+                <p>Explore a vast collection of products from electronics to fashion.</p>
+                <a href="#">Shop Now</a>
+            </div>
+            <div class="offering">
+                <h3>Fast and Secure Delivery</h3>
+                <p>Get your orders delivered quickly and securely to your doorstep.</p>
+                <a href="#">Learn More</a>
+            </div>
+            <div class="offering">
+                <h3>24/7 Customer Support</h3>
+                <p>Our support team is available round the clock to assist you.</p>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </section>
+    <section id="who-is-it-for">
+        <h2>Who Is It For?</h2>
+        <div class="audience">
+            <div class="audience-member">
+                <p>Shoppers looking for quality products at affordable prices.</p>
+                <p>Businesses seeking bulk orders and customized solutions.</p>
+            </div>
+            <div class="audience-member">
+                <p>Individuals who value convenience and fast delivery.</p>
+                <p>Entrepreneurs exploring new market opportunities.</p>
+            </div>
+        </div>
+    </section>
+    <main>
+
+        <section id="products-section">
+            <h2>Products</h2>
+            <div id="products-list" class="products-list"></div>
+        </section>
+
+        <section id="cart-section" class="hidden">
+            <h2>Your Cart</h2>
+            <div id="cart-items"></div>
+            <button id="checkout-btn">Checkout</button>
+            <button id="close-cart-btn">Close Cart</button>
+        </section>
+
+        <section id="checkout-section" class="hidden">
+            <h2>Checkout</h2>
+            <form id="checkout-form">
+                <label>
+                    Address:
+                    <textarea id="address" required></textarea>
+                </label>
+                <label>
+                    Payment Method:
+                    <select id="payment-method" disabled>
+                        <option value="debit-card" selected>Debit Card (Default)</option>
+                    </select>
+                </label>
+                <button type="submit">Make Payment</button>
+                <button type="button" id="cancel-checkout-btn">Cancel</button>
+            </form>
+        </section>
+
+        <section id="orders-section" style="display:none;">
+            <h2>My Orders</h2>
+            <div id="orders-list"></div>
+        </section>
+
+        <section id="auth-section" class="hidden">
+            <div id="login-form" class="auth-form hidden">
+                <h2>Login</h2>
+                <form>
+                    <label>Email: <input type="email" id="login-email" required /></label>
+                    <label>Password: <input type="password" id="login-password" required /></label>
+                    <button type="submit">Login</button>
+                    <button type="button" id="login-cancel-btn">Cancel</button>
+                </form>
+            </div>
+            <div id="signup-form" class="auth-form hidden">
+                <h2>Sign Up</h2>
+                <form>
+                    <label>Email: <input type="email" id="signup-email" required /></label>
+                    <label>Password: <input type="password" id="signup-password" required /></label>
+                    <button type="submit">Sign Up</button>
+                    <button type="button" id="signup-cancel-btn">Cancel</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
